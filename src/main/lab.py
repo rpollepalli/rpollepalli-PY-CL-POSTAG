@@ -7,6 +7,7 @@ POS tagging is employeed frequently in tasks such as sentiment analysis, syntax 
 """
 from nltk.tag import pos_tag
 from nltk.tokenize import word_tokenize
+import nltk
 
 # We will be using NLTK's POS Tagging class
 def samplePOSTagging(): 
@@ -15,13 +16,17 @@ def samplePOSTagging():
 
     print(pos_tag(tokens))
 
-# Write a sentence that contains the following: a singular noun (NN tag, ie 'apple'), an adjective(JJ tag, ie 'many', 'big'), and a verb in base form (VB tag, ie 'take').
+# Write a sentence that contains the following: a singular noun (NN tag, ie 'apple'), 
+# an adjective(JJ tag, ie 'many', 'big'), and a verb in base form (VB tag, ie 'take').
 # And then complete the following function that will:
 #   1. tokenize the sentence 
 #   2. Tag each token with their respective POS tags
 #   3. And return the resulting list 
 # The test will verify that the NN, JJ, and VB tag exists somewhere in the returned list of pos tagged word tokens
 def posTaggingExercise():
-    text = "your_ingenuous_sentence_here"
-
-    return text
+    nltk.download('punkt')
+    nltk.download('averaged_perceptron_tagger')
+    text = "Eating apple is a good habit, take an apple everyday to keep doctor away , may be a big one every day"
+    tokens = word_tokenize(text)
+    results = pos_tag(tokens)
+    return results
